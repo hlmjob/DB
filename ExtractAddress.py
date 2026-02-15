@@ -41,7 +41,7 @@ def get_title_block_list(file_path, page_numbers):
 
 def extract_address(lines):
     text = next((line for line in lines if "住居表示" in line or "住所" in line), "")
-    match = re.search(r'(?:住居表示|住所)：(.*?)(?=\n地名地番：)', text, re.DOTALL)
+    match = re.search(r'(?:住居表示|住所)：(.*?)(?=\n)', text, re.DOTALL)
     if match:
         raw_address = match.group(1)
         clean_address = re.sub(r'〒?\d{3}-\d{4}', '', raw_address)
